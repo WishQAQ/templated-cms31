@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{dede:field.title/}_{dede:global.cfg_webname/}</title>
+<meta name="keywords" content="{dede:field name='keywords'/}" />
+<meta name="description" content="{dede:field name='description' function='html2text(@me)'/}" />
+<link href="{dede:global.cfg_templets_skin/}/css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/js/jquery1.42.min.js"></script>
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/js/jquery.superslide.2.1.1.js"></script>
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/js/xgw.js"></script>
+</head>
+
+<body>
+<!--header开始----> 
+{dede:include filename="head.htm"/} 
+<!--header结束---->
+<div id="sdcp_banner"> </div>
+<div id="pageBody"> 
+  <!--左侧栏目开始---->
+  <div class="menu"> {dede:include filename="sidebar.htm"/} </div>
+  <!--左侧栏目结束---->
+  <div class="pagecontent">
+    <div class="dress">
+      <p>当前页面：{dede:field name='position'/}</p>
+    </div>
+    <div class="content">
+      <ul class="pinpaiList">
+        {dede:list pagesize='12'}
+        <li> <a href="" title="[field:title/]"> <img alt="[field:title/]"  src="[field:picname/]" title="[field:title/]" width="185" height="112"></a> </li>
+        {/dede:list} <br/>
+        <br/>
+      </ul>
+      <span class="pageinfo">{dede:pagelist listitem="index,end,pre,next,pageno" /}</span> </div>
+  </div>
+</div>
+<script type="text/javascript">
+	$(function() {
+		Xgw.initBase();
+				var level = 2;
+				$("[cid=104] a").addClass('fblue');
+				var open = function($this, active) {
+					var items = $this.nextAll(".menu_item_children");
+
+					$(items).each(function(index){
+
+						if(index === 0){
+
+							var count = $(this).find(".menu_item_child,.menu_item_child_end").length;
+							var height = count * 21 + 1 + 16 + "px"
+
+							if (active) {
+								$(this).animate({"height":height},200);
+							} else {
+								$(this).height(height).show();
+							}
+						}else{
+							//$(this).animate({"height":"0px"},200);
+						}
+					});
+
+					$this.removeClass('more_item_close').addClass("more_item_open");
+				};
+				var close = function($this, status) {
+					if ( !status) return;	
+					$this.nextAll(".menu_item_children").first().animate({"height":"0px"},200);
+					$this.addClass('more_item_close').removeClass("more_item_open");
+				}
+				$(".menu_has_child_item").click(function() {
+					$(".menu_item_children").css("display","none");
+					var $this = $(this);
+					if ($this.hasClass('more_item_open')) {
+						close($this, $(this).attr("class"));
+					} else {
+						open($this, true);
+					}
+				})	
+	});
+</script> 
+
+<!--footer开始--> 
+{dede:include filename="footer.htm"/} 
+<!--footer结束-->
+</body>
+</html>

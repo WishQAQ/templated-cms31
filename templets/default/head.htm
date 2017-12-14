@@ -1,0 +1,53 @@
+<div id="top">
+  <div class="topBox marginAuto">
+    <p style="color:#FFF;float:left;"><a href="/" class="jiathis jiathis_txt jialike" target="_blank">返回公司集团</a> <a href="/">婚庆策划</a><a href="/">影视传媒</a><a href="/">广告设计</a></p>
+    <p style="color:#FFF;float:right;text-align:right; "> 服务热线：{dede:global.cfg_tel/}</p>
+  </div>
+</div>
+<div id="head">
+  <div class="headBox marginAuto">
+    <h2><a href="/">海南织梦58科技有限公司</a></h2>
+    <ul class="nav" id="nav">
+      <li class="nLi">
+        <h3><a href="/">首页</a></h3>
+      </li>
+      {dede:channelartlist typeid='top' row=6 currentstyle='on'}
+       <li class="nLi {dede:field.currentstyle/}" ><!--<li class="nLi on">-->
+        <h3><a href="{dede:field name='typeurl'/}">{dede:field name='typename'/}</a></h3>
+        <ul class="sub">
+          {dede:channel type='son' noself='yes'}
+          <li><a href="[field:typelink/]">[field:typename/]</a></li>
+          {/dede:channel}
+        </ul>
+      </li>
+    {/dede:channelartlist}
+     
+    </ul>
+    <script type="text/javascript" src="{dede:global.cfg_templets_skin/}/js/jia.js" charset="utf-8"></script> 
+    <script id="jsID" type="text/javascript">
+			
+			jQuery("#nav").slide({ 
+				type:"menu",// 效果类型，针对菜单/导航而引入的参数（默认slide）
+				titCell:".nLi", //鼠标触发对象
+				targetCell:".sub", //titCell里面包含的要显示/消失的对象
+				effect:"slideDown", //targetCell下拉效果
+				delayTime:300 , //效果时间
+				triggerTime:0, //鼠标延迟触发时间（默认150）
+				returnDefault:true //鼠标移走后返回默认状态，例如默认频道是"预告片"，鼠标移走后会返回"预告片"（默认false）
+			});
+		</script> 
+    <script type="text/javascript">
+        function AddFavorite(sURL, sTitle) {
+    try {
+        window.external.addFavorite(sURL, sTitle);
+    } catch (e) {
+        try {
+            window.sidebar.addPanel(sTitle, sURL, "");
+        } catch (e) {
+            alert("加入收藏失败，请使用Ctrl+D进行添加");
+        }
+    }
+}
+        </script> 
+  </div>
+</div>

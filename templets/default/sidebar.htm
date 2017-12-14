@@ -1,0 +1,9 @@
+<div class="menu_title"> {dede:field name='typeid' function="GetTopTypename(@me) /} </div>
+<ul class="menu_list">
+  {dede:channel type='son' currentstyle="
+  <li class='menu_item'><a href='~typelink~'>~typename~</a></li>
+  "}
+  <li class="menu_item"><a href='[field:typeurl/]'>[field:typename/]</a></li>
+  <li class="menu_gap ml11">&nbsp;</li>
+  {/dede:channel}
+</ul>
